@@ -384,12 +384,25 @@ See `RESEARCH.md` for deep technical exploration.
 
 ---
 
+## Authors & Contributors
+
+**Lead:** Jessica West ([@SNAPKITTYWEST](https://github.com/SNAPKITTYWEST))  
+**AI Partner:** Claude (Anthropic)
+
+**Core Team:**
+- Jessica West — Architecture, governance, proof strategy, supervision
+- Claude (Haiku 4.5) — Implementation (25+ modules, 5.4K lines, 10 phases)
+
+See `CONTRIBUTORS.md` for full list.
+
+---
+
 ## License
 
 **Apache License 2.0** — Sovereign source, permissive use.
 
 ```
-Copyright 2026 SnapKitty Collective
+Copyright 2026 Jessica West / SnapKitty Collective
 
 Licensed under the Apache License, Version 2.0.
 See LICENSE file for full terms.
@@ -453,7 +466,8 @@ Complete formal verification of the Jacobian Conjecture (or establish its indepe
 ```
 ═══════════════════════════════════════════════════════════════════
   Made with rigor, precision, and sovereign mathematics
-  SNAPKITTYWEST Collective | 2026
+  Jessica West (SNAPKITTYWEST) + Claude (Haiku)
+  SnapKitty Collective | 2026
 ═══════════════════════════════════════════════════════════════════
 ```
 
