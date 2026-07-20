@@ -1,0 +1,112 @@
+cabal-version:      3.0
+name:               liquidlean
+version:            0.1.0.0
+synopsis:           Higher-Order Constraints for the Jacobian Conjecture
+description:
+  LiquidLean: m4 generation + HOC specification + Liquid Haskell verification
+  + Haskell execution. Formalizing the Jacobian Conjecture under strict
+  four-language constitution. No Lean. No external SMT. No approximation.
+license:            AGPL-3.0-only
+author:             SnapKitty Collective
+maintainer:         info@snapkitty.dev
+category:           Formal Methods
+build-type:         Simple
+
+common warnings
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Wincomplete-record-updates
+    -Wincomplete-uni-patterns
+    -Wredundant-constraints
+    -fhide-source-paths
+
+library
+  import:           warnings
+  exposed-modules:
+    LiquidLean.HOC.Token
+    LiquidLean.HOC.Lexer
+    LiquidLean.HOC.Syntax
+    LiquidLean.HOC.Parser
+    LiquidLean.HOC.Pretty
+    LiquidLean.HOC.Diagnostic
+    LiquidLean.Refinement.Predicate
+    LiquidLean.Refinement.Value
+    LiquidLean.Refinement.Environment
+    LiquidLean.Refinement.Subtyping
+    LiquidLean.Refinement.Judgment
+    LiquidLean.Constraint.Syntax
+    LiquidLean.Constraint.Substitution
+    LiquidLean.Constraint.Unification
+    LiquidLean.Constraint.Closure
+    LiquidLean.Constraint.Certificate
+    LiquidLean.Thermal.Energy
+    LiquidLean.Thermal.Monad
+    LiquidLean.Thermal.Laws
+    LiquidLean.Polynomial.Natural
+    LiquidLean.Polynomial.Rational
+    LiquidLean.Polynomial.Monomial
+    LiquidLean.Polynomial.Polynomial
+    LiquidLean.Polynomial.Degree
+    LiquidLean.Polynomial.Compose
+    LiquidLean.Polynomial.Derivative
+    LiquidLean.Polynomial.Matrix
+    LiquidLean.Polynomial.Jacobian
+    LiquidLean.Certificate.Format
+    LiquidLean.Certificate.Parser
+    LiquidLean.Certificate.Validate
+    LiquidLean.Certificate.Replay
+    LiquidLean.Jacobian.Statement
+    LiquidLean.Jacobian.DimensionOne
+    LiquidLean.Jacobian.Affine
+    LiquidLean.Governance.ADR
+    LiquidLean.Governance.Claim
+    LiquidLean.Governance.Audit
+    LiquidLean.Governance.Gate
+  build-depends:
+    base >=4.16 && <5,
+    containers,
+    text,
+    bytestring,
+    parsec,
+    mtl,
+    filepath,
+    directory,
+    process,
+    time,
+    cryptohash-sha256,
+    base16-bytestring,
+    aeson,
+    scientific
+  hs-source-dirs:   src
+  default-language: Haskell2010
+
+executable liquidlean
+  import:           warnings
+  main-is:          Main.hs
+  build-depends:
+    base >=4.16 && <5,
+    liquidlean,
+    optparse-applicative,
+    text
+  hs-source-dirs:   app
+  default-language: Haskell2010
+
+test-suite liquidlean-test
+  import:           warnings
+  type:             exitcode-stdio-1.0
+  main-is:          Main.hs
+  other-modules:
+    Test.HOCRoundTrip
+    Test.RefinementProperties
+    Test.UnificationProperties
+  build-depends:
+    base >=4.16 && <5,
+    liquidlean,
+    tasty,
+    tasty-hunit,
+    tasty-quickcheck,
+    QuickCheck,
+    text
+  hs-source-dirs:   test
+  default-language: Haskell2010
